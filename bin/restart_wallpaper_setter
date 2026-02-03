@@ -1,0 +1,41 @@
+#!/bin/bash
+set -euo pipefail
+
+# ===== settings =====
+DOMAIN="gui/$(id -u)"
+
+PLISTS=(
+	"$HOME/Library/LaunchAgents/set.wallpaper.to.morning.plist"
+	"$HOME/Library/LaunchAgents/set.wallpaper.to.day.plist"
+	"$HOME/Library/LaunchAgents/set.wallpaper.to.evening.plist"
+	"$HOME/Library/LaunchAgents/set.wallpaper.to.night.plist"
+)
+
+# ===== process =====
+for PLIST in "${PLISTS[@]}"; do
+	if [[ ! -f "$PLIST" ]]; then
+		echo "Not found: $PLIST (skip)"
+		continue
+	fi
+
+	LABEL=$(/usr/bin/plutil -extract Label raw "$PLIST" 2>/dev/null || true)
+
+	if [[ -z "$LABEL" ]]; then
+		echo "Label not found in $PLIST (skip)"
+		continue
+	fi
+
+	echo "=== Restarting $LABEL ==="
+
+	if launchctl print "$DOMAIN/$LABEL" >/dev/null 2>&1; then
+		echo "Stopping $LABEL..."
+		launchctl bootout "$DOMAIN" "$PLIST"
+	else
+		echo "$LABEL is not running (skip bootout)"
+	fi
+
+	echo "Starting $LABEL..."
+	launchctl bootstrap "$DOMAIN" "$PLIST"
+done
+
+echo "All done."
