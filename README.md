@@ -1,4 +1,4 @@
-# mac-wallpaper-setter
+# macos-wallpaper-scheduler
 
 Set macOS wallpapers by time of day using LaunchAgents and AppleScript.
 
