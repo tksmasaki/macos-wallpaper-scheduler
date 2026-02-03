@@ -29,6 +29,11 @@ ln -sf "$(pwd)"/scripts/set_wallpaper_to_day.scpt ~/src/scripts/set_wallpaper_to
 ln -sf "$(pwd)"/scripts/set_wallpaper_to_evening.scpt ~/src/scripts/set_wallpaper_to_evening.scpt
 ln -sf "$(pwd)"/scripts/set_wallpaper_to_night.scpt ~/src/scripts/set_wallpaper_to_night.scpt
 
+ln -sf "$(pwd)"/bin/set_wallpaper_to_morning ~/bin/set_wallpaper_to_morning
+ln -sf "$(pwd)"/bin/set_wallpaper_to_day ~/bin/set_wallpaper_to_day
+ln -sf "$(pwd)"/bin/set_wallpaper_to_evening ~/bin/set_wallpaper_to_evening
+ln -sf "$(pwd)"/bin/set_wallpaper_to_night ~/bin/set_wallpaper_to_night
+
 ln -sf "$(pwd)"/LaunchAgents/set.wallpaper.to.morning.plist ~/Library/LaunchAgents/set.wallpaper.to.morning.plist
 ln -sf "$(pwd)"/LaunchAgents/set.wallpaper.to.day.plist ~/Library/LaunchAgents/set.wallpaper.to.day.plist
 ln -sf "$(pwd)"/LaunchAgents/set.wallpaper.to.evening.plist ~/Library/LaunchAgents/set.wallpaper.to.evening.plist
@@ -44,11 +49,11 @@ restart_wallpaper_setter
 
 ```shell
 # set wallpaper to morning
-osascript ~/src/scripts/set_wallpaper_to_morning.scpt
+set_wallpaper_to_morning
 # set wallpaper to day
-osascript ~/src/scripts/set_wallpaper_to_day.scpt
+set_wallpaper_to_day
 # set wallpaper to evening
-osascript ~/src/scripts/set_wallpaper_to_evening.scpt
+set_wallpaper_to_evening
 # set wallpaper to night
-osascript ~/src/scripts/set_wallpaper_to_night.scpt
+set_wallpaper_to_night
 ```

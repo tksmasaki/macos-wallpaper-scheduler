@@ -1,0 +1,4 @@
+#!/bin/bash
+set -e
+
+osascript "$HOME/src/scripts/set_wallpaper_to_evening.scpt"

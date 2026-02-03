@@ -7,8 +7,9 @@
     <string>set.wallpaper.to.morning</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/usr/bin/osascript</string>
-        <string>~/src/scripts/set_wallpaper_to_morning.scpt</string>
+        <string>/bin/bash</string>
+        <string>-lc</string>
+        <string>$HOME/bin/set_wallpaper_to_morning</string>
     </array>
     <key>StartCalendarInterval</key>
     <dict>
